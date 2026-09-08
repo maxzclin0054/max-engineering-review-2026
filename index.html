@@ -1,29 +1,311 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102535"><meta name="description" content="Max 的 2026 工程成果：需求釐清、前後端協調、AI 圖面生成與操作流程改善。"><title>Max · 2026 工程成果</title>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2026 個人績效｜Max</title>
 <style>
-:root{--ink:#102535;--muted:#647784;--paper:#f8fafb;--line:#dce5e9;--accent:#087e8b;--ice:#dff3f2;--gold:#d5ba81;--mono:ui-monospace,Consolas,monospace}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #19b3c1;outline-offset:5px}button:disabled{cursor:default;opacity:.5}.wrap{max-width:1200px;margin:auto;padding:0 48px}.nav{position:sticky;top:0;z-index:10;background:#f8fafbf2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:76px}.brand{font-size:22px;font-weight:750;letter-spacing:-1px}.brand span{font-weight:400;color:var(--muted);font:12px var(--mono);letter-spacing:2px;margin-left:15px}.navlinks{display:flex;gap:30px;font-size:14px}.navlinks a:hover{color:var(--accent)}.hero{background:var(--ink);color:white;overflow:hidden}.hero .wrap{padding-top:82px;padding-bottom:72px;display:grid;grid-template-columns:1.4fr 1fr;gap:55px}.eyebrow{font:12px var(--mono);letter-spacing:2px;color:#8fa8b6;text-transform:uppercase}.hero h1{font-size:clamp(36px,4.8vw,64px);line-height:1.35;letter-spacing:-2px;font-weight:550;margin:27px 0}.hero h1 span{color:#96cccb}.hero p{color:#b9c9d3;font-size:17px;max-width:580px}.identity{display:flex;align-items:center;gap:16px;margin:35px 0}.identity strong{font-size:21px}.identity small{font-size:14px;color:#a9bac6}.heroLink{display:inline-flex;gap:25px;margin-top:16px;border-bottom:1px solid #6d8c97;padding:8px 0;color:#c8dfdf}.heroAside{align-self:center;padding-left:32px;border-left:1px solid #34505f}.heroAside .index{font:13px var(--mono);color:#8badb9}.heroAside h2{font-size:24px;font-weight:500;margin:20px 0 30px}.scope{display:flex;align-items:center;gap:18px;padding:14px 0;border-top:1px solid #34505f;font-size:15px}.scope b{font:12px var(--mono);color:var(--gold)}.section{padding:86px 0}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}.kicker{font:12px var(--mono);color:var(--accent);letter-spacing:2px}.section h2{font-size:34px;letter-spacing:-1px;margin:8px 0;font-weight:600}.sectionHead p{font-size:15px;max-width:350px;color:var(--muted);margin:0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0}.metric+.metric{border-left:1px solid var(--line);padding-left:32px}.metric b{font-size:46px;letter-spacing:-2px;line-height:1.4;font-weight:500}.metric b small{font-size:26px}.metric h3{font-size:16px;margin:12px 0 4px}.metric p{margin:0;color:var(--muted);font-size:14px}.metric .tag{font:12px var(--mono);color:var(--accent);margin-bottom:12px}.source{font-size:12px;color:var(--muted);margin-top:16px}.work{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}.tabs button{background:none;border:1px solid var(--line);color:var(--muted);padding:9px 17px;border-radius:30px;font-size:14px;transition:.2s}.tabs button[aria-selected=true]{background:var(--ink);color:white;border-color:var(--ink)}.case{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;min-height:460px}.case[hidden]{display:none}.case h3{font-size:30px;margin:4px 0 12px}.case .lead{font-size:18px;color:#345363}.case p{font-size:16px;color:var(--muted)}.case ul{padding:0;list-style:none;margin:26px 0}.case li{position:relative;padding:10px 0 10px 20px;border-bottom:1px solid var(--line);font-size:15px}.case li:before{content:'↳';position:absolute;left:0;color:var(--accent)}.note{font-size:12px!important;color:var(--muted)!important}.demo{background:#f3f7f8;border:1px solid var(--line);border-radius:8px;overflow:hidden;align-self:start}.demoTop{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#eaf0f3;border-bottom:1px solid var(--line);font:12px var(--mono);color:#4a6574}.dot{display:inline-block;background:var(--accent);width:6px;height:6px;border-radius:50%;margin-right:8px}.demoControls{padding:15px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:1px solid #bbd0d7;background:white;border-radius:4px;padding:8px 16px;font-size:14px;color:var(--ink)}.btn.primary{background:var(--ink);color:white;border-color:var(--ink)}.btn.active{border-color:var(--accent);color:var(--accent);background:var(--ice)}.status{font-size:13px;color:var(--accent);min-height:24px}.demoBottom{border-top:1px solid var(--line);padding:14px 20px;font-size:13px;color:var(--muted)}#topology{width:100%;height:auto;display:block;padding:10px 14px 20px}#topology path{fill:none;stroke:#829ba7;stroke-width:2;transition:d .6s}#topology g{transition:transform .6s}#topology rect{fill:white;stroke:#a2b9c4;stroke-width:1.5;rx:5}#topology text{font:12px var(--mono);fill:#234455;text-anchor:middle}.demoGrid{padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.param{background:white;border:1px solid #d7e2e7;border-radius:4px;padding:12px 8px;text-align:center;color:#708690;font:13px var(--mono);transition:.3s}.param.set{background:#dff3ed;color:#147260;border-color:#8dc6b6}.profileChoice{margin:0 20px;display:flex;gap:10px;flex-wrap:wrap}.profileChoice button[aria-pressed=true]{background:var(--ice);border-color:var(--accent)}.flowline{display:flex;align-items:center;gap:7px;padding:16px 20px;flex-wrap:wrap;font-size:13px}.flowline span{padding:5px 9px;border:1px solid var(--line);background:white;border-radius:3px}.flowline span.current{color:#07766b;border-color:#8fcabc;background:#e0f4ef}.dataTable{width:calc(100% - 40px);margin:20px;border-collapse:collapse;font:13px var(--mono)}.dataTable th,.dataTable td{padding:13px 10px;text-align:left;border-bottom:1px solid var(--line)}.dataTable th{font-weight:500;color:var(--muted)}.prototype{padding:22px}.protoHeader{font-size:16px;margin-bottom:22px}.protoRow{display:flex;gap:10px;margin-bottom:14px;align-items:center;font-size:14px}.protoRow .field{background:white;border:1px solid var(--line);padding:8px 12px;flex:1}.protoResult{padding:18px;background:#e0f1ec;color:#1a6956;font-size:14px}.role{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}.role h2{max-width:370px;line-height:1.5}.role p{color:var(--muted)}details{border-top:1px solid var(--line);padding:20px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none;display:flex;align-items:center;font-size:18px;gap:18px}summary::-webkit-details-marker{display:none}summary span{font:12px var(--mono);color:var(--accent)}summary:after{content:'+';margin-left:auto;color:var(--accent)}details[open] summary:after{content:'−'}details p{font-size:15px;padding-left:38px;margin-bottom:0}.future{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:35px}.future h3{font-size:19px;border-top:2px solid #9db7bf;padding-top:20px}.future p{font-size:15px;color:var(--muted)}footer{background:var(--ink);color:#d6e4e9;padding:56px 0}footer h2{font-size:28px;font-weight:500;margin:0 0 20px}footer p{font-size:14px;color:#97afbd}.footline{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #34505f;margin-top:34px;padding-top:24px;font:12px var(--mono);color:#97afbd}.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:30}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-@media(max-width:800px){.wrap{padding:0 24px}.hero .wrap{grid-template-columns:1fr;padding-top:50px;gap:35px}.heroAside{padding-left:20px}.hero h1{font-size:42px}.navlinks{gap:16px;font-size:13px}.brand span{display:none}.section{padding:56px 0}.sectionHead{display:block}.sectionHead p{margin-top:16px;max-width:none}.metrics{gap:16px}.metric+.metric{padding-left:16px}.metric b{font-size:32px}.metric b small{font-size:18px}.metric h3{font-size:14px}.metric p{font-size:13px}.case,.role{grid-template-columns:1fr;gap:24px}.future{grid-template-columns:1fr;gap:8px}.section h2{font-size:28px}.case h3{font-size:26px}.footline{display:block;line-height:2}.navlinks a:last-child{display:none}}
-@media(max-width:440px){.metrics{grid-template-columns:1fr}.metric+.metric{border-left:none;border-top:1px solid var(--line);padding:20px 0 0}.metric b{font-size:42px}.hero h1{font-size:36px}.demoControls{padding:12px}.tabs button{padding:8px 12px}.demoGrid{padding:14px;gap:6px}.param{font-size:12px;padding:10px 4px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}@media print{.nav,.demoControls,.profileChoice,.progress{display:none}.hero,footer{background:white;color:var(--ink)}.hero p,footer p{color:var(--muted)}.case[hidden]{display:grid}.case{break-inside:avoid;margin-top:40px}.section{padding:30px 0}.tabs{display:none}.hero .wrap{padding:30px 48px}.heroAside{display:none}.hero .wrap{grid-template-columns:1fr}}
-</style></head>
-<body><div class="progress" aria-hidden="true"></div><header class="nav"><div class="wrap"><a class="brand" href="#top">Max<span>ENGINEERING / 2026</span></a><nav class="navlinks" aria-label="主要導覽"><a href="#results">成果</a><a href="#projects">案例</a><a href="#role">工作方式</a><a href="#next">下一步</a></nav></div></header>
-<main id="top"><section class="hero"><div class="wrap"><div><div class="eyebrow">2026 PERFORMANCE REVIEW</div><h1>把複雜留給技術，<br><span>把簡單留給使用者。</span></h1><p>從需求釐清、UI 示意到前後端協作，<br>讓功能有清楚的方向，也有確實的交付。</p><div class="identity"><strong>林志忠 Max</strong><small>前端工程師<br>雲監控部平台開發課</small></div><a class="heroLink" href="#projects">探索工程成果 <span aria-hidden="true">↗</span></a></div><aside class="heroAside"><div class="index">WORK IN FOCUS / 01—05</div><h2>理解需求。整理方案。<br>把功能完成。</h2><div class="scope"><b>01</b>前端開發與 UI / UX</div><div class="scope"><b>02</b>AI 整合與監控圖面生成</div><div class="scope"><b>03</b>跨角色協調與開發進度掌控</div></aside></div></section>
-<section class="section" id="results"><div class="wrap"><div class="sectionHead"><div><span class="kicker">01 / RESULTS</span><h2>用具體改善，說明成果。</h2></div><p>提升圖面建置效率、簡化環境切換，<br>將工程工作轉化為使用上的改善。</p></div><div class="metrics"><article class="metric"><div class="tag">FiDraw</div><b>50<small>% ↓</small></b><h3>開發時間降低</h3><p>AI 輔助解析，結合程式化生成。</p></article><article class="metric"><div class="tag">FiDraw</div><b>20<small>% → </small>5<small>%</small></b><h3>錯誤率改善</h3><p>工程師確認資料，減少人為錯誤。</p></article><article class="metric"><div class="tag">Threshold Profile</div><b>約 10 <small>秒內</small></b><h3>完成多設備標準切換</h3><p>透過 Profile 批次套用環境閾值。</p></article></div><p class="source">數據依據：2026 個人績效報告最新版。</p></div></section>
-<section class="section work" id="projects"><div class="wrap"><div class="sectionHead"><div><span class="kicker">02 / SELECTED WORK</span><h2>從功能，看見工程方法。</h2></div><p>選擇案例，了解需求、實作與改善。<br>互動區為概念示意，非實際產品畫面。</p></div><div class="tabs" role="tablist" aria-label="成果案例"><button role="tab" id="tab-fidraw" aria-controls="fidraw" aria-selected="true">01 FiDraw</button><button role="tab" id="tab-profile" aria-controls="profile" aria-selected="false" tabindex="-1">02 Profile</button><button role="tab" id="tab-order" aria-controls="order" aria-selected="false" tabindex="-1">03 工單 2.0</button><button role="tab" id="tab-excel" aria-controls="excel" aria-selected="false" tabindex="-1">04 Excel Export</button><button role="tab" id="tab-ai" aria-controls="ai" aria-selected="false" tabindex="-1">05 AI Workflow</button></div>
-<article class="case" role="tabpanel" id="fidraw" aria-labelledby="tab-fidraw"><div><div class="kicker">AI × DIAGRAM</div><h3>讓結構化資料，<br>成為可讀的拓樸圖。</h3><div class="lead">FiDraw · AI 輔助拓樸圖生成</div><p>串接 AI 解析的設備節點與連接關係，程式化繪製監控拓樸圖，並優化節點位置與線段轉折。</p><ul><li>整合 AI 結構化資料與繪圖流程</li><li>工程師確認設備與連接資料</li><li>優化圖面配置，提升檢視時的可讀性</li></ul></div><div class="demo"><div class="demoTop"><span><i class="dot"></i>FiDraw / 拓樸配置示意</span><span>SVG</span></div><div class="demoControls"><button class="btn active" id="rawGraph" aria-pressed="true">初始配置</button><button class="btn" id="cleanGraph" aria-pressed="false">配置優化</button><span class="status" id="graphStatus" aria-live="polite">相同節點與連接資料</span></div><svg id="topology" viewBox="0 0 540 285" role="img" aria-label="設備拓樸示意，切換按鈕可比較初始與優化配置"><path id="wire0"/><path id="wire1"/><path id="wire2"/><path id="wire3"/><path id="wire4"/><g id="node0"><rect width="88" height="38"/><text x="44" y="24">POWER</text></g><g id="node1"><rect width="88" height="38"/><text x="44" y="24">UPS A</text></g><g id="node2"><rect width="88" height="38"/><text x="44" y="24">UPS B</text></g><g id="node3"><rect width="88" height="38"/><text x="44" y="24">LOAD 01</text></g><g id="node4"><rect width="88" height="38"/><text x="44" y="24">LOAD 02</text></g><g id="node5"><rect width="88" height="38"/><text x="44" y="24">LOAD 03</text></g></svg><div class="demoBottom">比較節點排列與直角線段轉折。此示意不執行 AI 解析，也不代表實測前後圖面。</div></div></article>
-<article class="case" role="tabpanel" id="profile" aria-labelledby="tab-profile" hidden><div><div class="kicker">PROTOTYPE × USABILITY</div><h3>先確認操作方式，<br>再簡化設定流程。</h3><div class="lead">環境閾值 Profile</div><p>以 AI 產生 Prototype，和使用者討論並調整 UI 操作流程。將設備的 16 項參數設定，整合為「選擇 Profile、批次套用」兩步。</p><ul><li>Prototype 讓抽象需求有共同討論的畫面</li><li>單台設定由 16 步減為 2 步，減少 87.5%</li><li>保留 Ready / Alarm 驗證與 Restore 還原</li></ul><p class="note">步驟比較依本人補充：每項參數設定計 1 步；不含後續驗證與還原。右側為流程示意，無真實設備連線。</p></div><div class="demo"><div class="demoTop"><span><i class="dot"></i>Profile / 16 項參數</span><span id="stepCount">0 / 2 步</span></div><div class="demoControls"><span>1. 選擇 Profile</span></div><div class="profileChoice"><button class="btn" data-profile="A" aria-pressed="false">測試環境 A</button><button class="btn" data-profile="B" aria-pressed="false">測試環境 B</button></div><div class="demoGrid" id="params"></div><div class="demoControls"><button class="btn primary" id="applyProfile" disabled>2. Apply 批次套用</button><button class="btn" id="restoreProfile">Restore 還原</button></div><div class="demoBottom" id="profileStatus" aria-live="polite">先選擇一組 Profile，即可示意批次套用。</div></div></article>
-<article class="case" role="tabpanel" id="order" aria-labelledby="tab-order" hidden><div><div class="kicker">EVENT × ACTION</div><h3>讓事件，<br>接上後續的處理。</h3><div class="lead">工單 2.0 · Mantify 整合</div><p>監控事件發生後，主動通知相關人員，並透過工單持續追蹤處理進度。</p><ul><li>Mantify Desktop / Web / App 跨裝置接收</li><li>從 BMS 事件延伸到行動通知</li><li>透過工單串接事件處理與進度追蹤</li></ul></div><div class="demo"><div class="demoTop"><span><i class="dot"></i>事件處理 / 流程示意</span></div><div class="flowline" id="orderSteps"><span class="current">BMS 事件</span>→<span>Mantify 通知</span>→<span>建立工單</span>→<span>追蹤處理</span></div><div class="prototype"><div class="protoHeader" id="eventTitle">監控事件產生</div><p id="eventBody">BMS 偵測到事件，後續由通知與工單流程串接處理。</p></div><div class="demoControls"><button class="btn primary" id="nextEvent">下一階段 →</button><button class="btn" id="resetEvent">重新查看</button></div><div class="demoBottom">此互動僅說明流程，不會發送通知或建立真實工單。</div></div></article>
-<article class="case" role="tabpanel" id="excel" aria-labelledby="tab-excel" hidden><div><div class="kicker">DATA × APPLICATION</div><h3>讓監控數據，<br>繼續被使用。</h3><div class="lead">Excel Export · 數據延伸應用</div><p>將 BMS 監控數據匯出為 Excel，方便使用者依工作需求整理、比對與分析。</p><ul><li>整理資料欄位與輸出格式</li><li>支援後續報表整理與數據比對</li><li>供第三方系統進一步處理與應用</li></ul></div><div class="demo"><div class="demoTop"><span><i class="dot"></i>資料欄位 / 示意</span><span>非真實監控資料</span></div><table class="dataTable"><thead><tr><th>設備</th><th>時間</th><th>數值</th><th>單位</th></tr></thead><tbody><tr><td>Device A</td><td>09:00</td><td>24.1</td><td>°C</td></tr><tr><td>Device B</td><td>09:00</td><td>23.8</td><td>°C</td></tr><tr><td>Device C</td><td>09:00</td><td>24.3</td><td>°C</td></tr></tbody></table><div class="flowline"><span>BMS 數據</span>→<span>整理欄位</span>→<span>Excel</span>→<span>後續分析</span></div><div class="demoBottom">將資料從畫面查閱，延伸到使用者自己的分析工作。</div></div></article>
-<article class="case" role="tabpanel" id="ai" aria-labelledby="tab-ai" hidden><div><div class="kicker">AI × FRONT-END</div><h3>AI 協助執行，<br>工程師掌握品質。</h3><div class="lead">AI 前端開發 Workflow</div><p>在適合的開發階段導入 AI：以 Prototype 協助需求確認，再輔助頁面與 CSS 實作，最後由工程師整合與 Review。</p><ul><li>需求判斷與流程確認由工程師負責</li><li>Prompt 納入 Existing Component 與 Design Rules</li><li>維持 Color、Spacing、Typography 一致性</li></ul></div><div class="demo"><div class="demoTop"><span><i class="dot"></i>Prototype / 討論流程示意</span></div><div class="demoControls"><button class="btn active" id="protoBefore" aria-pressed="true">初始操作</button><button class="btn" id="protoAfter" aria-pressed="false">調整後</button></div><div class="prototype" id="protoView"><div class="protoHeader">環境參數設定</div><div class="protoRow"><span>參數 01</span><span class="field">個別輸入</span></div><div class="protoRow"><span>參數 02</span><span class="field">個別輸入</span></div><div class="protoRow"><span>其餘參數</span><span class="field">逐項確認</span></div></div><div class="demoBottom">用具體畫面討論操作方式，再確認開發方向。此處是簡化的需求示意。</div></div></article>
-</div></section>
-<section class="section" id="role"><div class="wrap role"><div><span class="kicker">03 / HOW I WORK</span><h2>把不同看法，<br>整理成可執行的方向。</h2><p>收集使用者需求，釐清問題與期待；透過具體畫面討論，協調前後端工作，持續掌控整體開發進度。</p><p class="note">Angular / React / TypeScript / JavaScript<br>UI / UX · Dashboard · 資料視覺化</p></div><div><details open><summary><span>01</span>需求釐清</summary><p>先收集使用者的意見與看法，統整需求，確認功能需要解決的問題。</p></details><details><summary><span>02</span>方案具體化</summary><p>產生 UI 示意或 Prototype，與使用者討論並調整操作流程，建立共同理解。</p></details><details><summary><span>03</span>開發協調</summary><p>負責前端實作、協調後端開發，讓功能介面與資料整合能夠銜接。</p></details><details><summary><span>04</span>推進交付</summary><p>追蹤整體專案的開發進度，推進功能完成與問題改善。</p></details></div></div></section>
-<section class="section work" id="next"><div class="wrap"><span class="kicker">04 / NEXT</span><h2>把實作經驗，轉化為團隊方法。</h2><div class="future"><article><h3>UI / UX</h3><p>持續簡化複雜流程，兼顧不同需求，讓操作更直覺、簡單。</p></article><article><h3>專案管理</h3><p>強化任務規劃、進度掌控與研發統整，提升協作與交付能力。</p></article><article><h3>AI × Team Workflow</h3><p>整理可重用的 Workflow、Prompt 與規範，分享實務經驗，共同提升開發效率。</p></article></div></div></section>
-</main><footer><div class="wrap"><h2>把複雜留給技術，把簡單留給使用者。</h2><p>持續將 AI 與工程方法融入工作流程，與團隊一起提升開發效率與產品品質。</p><div class="footline"><span>林志忠 Max · 雲監控部平台開發課</span><span>2026 / FRONT-END ENGINEERING</span></div></div></footer>
+  :root{
+    --bg:#0b1220;
+    --panel:#101a2d;
+    --panel-2:#0f1727;
+    --text:#edf2f7;
+    --muted:#93a4b8;
+    --line:rgba(255,255,255,.08);
+    --accent:#7dd3fc;
+    --warm:#e6c98d;
+    --soft:#d8e2ec;
+    --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1000px 600px at 85% -5%, rgba(125,211,252,.09), transparent 60%),
+      linear-gradient(180deg,#0a1120 0%, #0b1220 48%, #0a101c 100%);
+    color:var(--text);
+    font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    letter-spacing:.01em;
+  }
+  a{color:inherit;text-decoration:none}
+  .progress{position:fixed;left:0;top:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--warm));width:0;z-index:99}
+  .nav{
+    position:fixed;inset:20px 0 auto 0;z-index:50;pointer-events:none;
+  }
+  .nav-inner{
+    width:min(calc(100% - 32px),var(--max));margin:auto;display:flex;justify-content:space-between;align-items:center;
+    color:#a9b8ca;font-size:12px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .nav-inner > *{pointer-events:auto}
+  .brand{display:flex;gap:10px;align-items:center}
+  .brand-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(125,211,252,.65)}
+  .jump{display:flex;gap:18px}
+  .jump a{opacity:.72;transition:.2s}
+  .jump a:hover{opacity:1}
+
+  .wrap{width:min(calc(100% - 32px),var(--max));margin:auto}
+  .hero{min-height:100svh;display:grid;align-items:center;padding:120px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end}
+  .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px}
+  h1{font-size:clamp(52px,7vw,96px);line-height:.98;letter-spacing:-.055em;margin:0;max-width:900px;font-weight:720}
+  h1 .soft{color:#a9b8ca;font-weight:520}
+  .hero p{font-size:18px;line-height:1.85;color:#a9b8ca;max-width:720px;margin:32px 0 0}
+  .meta{border-top:1px solid var(--line);padding-top:20px;color:#8da0b5;font-size:13px;line-height:1.9}
+  .meta strong{color:#dce6ef;font-weight:600}
+  .hero-mark{margin-top:42px;display:inline-flex;align-items:center;gap:10px;color:#b9c7d6;font-size:13px}
+  .hero-mark:before{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+
+  section{padding:120px 0;border-top:1px solid var(--line)}
+  .section-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:56px}
+  .kicker{color:#75869a;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding-top:8px}
+  h2{font-size:clamp(34px,4vw,58px);line-height:1.15;letter-spacing:-.035em;margin:0;font-weight:670}
+  .lead{color:#9fb0c2;font-size:17px;line-height:1.85;max-width:760px;margin-top:16px}
+
+  .role-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(8px)}
+  .card h3{margin:0 0 18px;font-size:14px;color:#cbd7e3;letter-spacing:.08em;text-transform:uppercase}
+  .skill-list,.role-list{display:grid;gap:14px}
+  .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line);color:#dbe6ef}
+  .row:first-child{border-top:0;padding-top:0}
+  .row small{color:#7f93a8;font-size:12px;white-space:nowrap}
+  .role-item{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+  .role-item:first-child{border-top:0;padding-top:0}
+  .role-item b{font-size:13px;color:var(--warm);font-weight:600}
+  .role-item span{color:#cbd7e3;line-height:1.7}
+  .statement{margin-top:18px;border-left:2px solid var(--accent);padding:16px 18px;color:#dce6ef;background:rgba(125,211,252,.04);border-radius:0 12px 12px 0}
+
+  .results{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .result{min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s transform,.25s border-color}
+  .result:hover{transform:translateY(-5px);border-color:rgba(125,211,252,.3)}
+  .result .num{font-size:11px;letter-spacing:.18em;color:#6f8399}
+  .result .metric{font-size:30px;font-weight:700;letter-spacing:-.03em}
+  .result h3{font-size:18px;text-transform:none;letter-spacing:0;margin:10px 0 8px}
+  .result p{color:#8fa2b6;line-height:1.7;font-size:14px;margin:0}
+  .tag{display:inline-block;margin-top:16px;color:#87a0b8;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+
+  .spotlight{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}
+  .feature{min-height:500px;position:relative;overflow:hidden}
+  .feature:after{content:"";position:absolute;width:320px;height:320px;border:1px solid rgba(125,211,252,.08);border-radius:50%;right:-80px;bottom:-90px}
+  .feature h3{font-size:34px;letter-spacing:-.03em;text-transform:none;margin-bottom:16px}
+  .feature p{color:#9fb0c2;line-height:1.85;max-width:650px}
+  .flow{display:grid;gap:10px;margin-top:38px}
+  .flow-item{display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+  .flow-item:first-child{border-top:0}
+  .flow-no{width:34px;height:34px;border:1px solid rgba(125,211,252,.25);display:grid;place-items:center;border-radius:50%;font-size:11px;color:var(--accent)}
+  .flow-item span{color:#d4dee8}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+  .metric-box{padding:18px;border-radius:14px;background:#0b1424;border:1px solid var(--line)}
+  .metric-box strong{font-size:30px;display:block;letter-spacing:-.03em}
+  .metric-box small{color:#7f93a8}
+
+  .stack{display:grid;gap:18px}
+  .mini{min-height:150px}
+  .mini h3{font-size:20px;text-transform:none;letter-spacing:0;margin-bottom:8px}
+  .mini p{margin:0;color:#93a4b8;line-height:1.7;font-size:14px}
+  .mini .mini-accent{color:var(--accent);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+  .step{padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+  .step i{font-style:normal;color:#6d8298;font-size:11px;letter-spacing:.16em}
+  .step h4{font-size:18px;margin:12px 0 8px}
+  .step p{color:#8fa2b6;font-size:13px;line-height:1.7;margin:0}
+  .rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .rules span{border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:12px;color:#a8b7c7;background:rgba(255,255,255,.02)}
+
+  .future{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .future h3{font-size:22px;text-transform:none;letter-spacing:0;margin-bottom:10px}
+  .future p{color:#94a7ba;line-height:1.75;margin:0}
+  .future .index{font-size:11px;color:var(--warm);letter-spacing:.18em;margin-bottom:40px}
+
+  .closing{min-height:78svh;display:grid;align-items:center;border-top:1px solid var(--line)}
+  .closing h2{font-size:clamp(48px,6.8vw,88px);max-width:950px;line-height:1.06}
+  .closing .accent{color:var(--accent)}
+  .closing p{font-size:18px;color:#8ea1b5;max-width:760px;line-height:1.8;margin-top:26px}
+  .sig{margin-top:50px;color:#6f8194;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media (max-width:980px){
+    .hero-grid,.section-head,.role-grid,.spotlight{grid-template-columns:1fr}
+    .results{grid-template-columns:repeat(2,1fr)}
+    .workflow,.future{grid-template-columns:1fr 1fr}
+    .jump{display:none}
+    section{padding:90px 0}
+  }
+  @media (max-width:620px){
+    .results,.workflow,.future{grid-template-columns:1fr}
+    .hero{padding-top:100px}
+    .card{padding:22px}
+    .role-item{grid-template-columns:78px 1fr}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-dot"></span><span>MAX / 2026 PERFORMANCE</span></div>
+    <div class="jump"><a href="#role">Role</a><a href="#results">Results</a><a href="#ai">AI × Workflow</a><a href="#future">Next</a></div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow reveal">Front-end Engineer · Cloud Monitoring</div>
+        <h1 class="reveal">把複雜留給技術，<br><span class="soft">把簡單留給使用者。</span></h1>
+        <p class="reveal">2026，我把前端工作從畫面實作往前後延伸：從需求釐清、方案設計、跨角色協作，到 AI 輔助與流程簡化。不是為了做更多功能，而是讓功能更容易被使用、被維護，也更快落地。</p>
+        <div class="hero-mark reveal">需求落地 · AI 提效 · 流程簡化 · 團隊效能</div>
+      </div>
+      <div class="meta reveal">
+        <strong>Max</strong><br>
+        雲監控部 · 專案工程師<br>
+        Angular / React / TypeScript / JavaScript<br>
+        UI/UX · Dashboard · Data Visualization
+      </div>
+    </div>
+  </section>
+
+  <section id="role">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">01 / 起 · Role</div>
+        <div><h2>不只接需求，<br>而是把需求一路推進到功能落地。</h2><div class="lead">前端只是我的主要實作位置；實際角色更接近需求與開發之間的橋接者。</div></div>
+      </div>
+      <div class="role-grid">
+        <div class="card reveal">
+          <h3>專長</h3>
+          <div class="skill-list">
+            <div class="row"><span>Angular / React</span><small>Front-end</small></div>
+            <div class="row"><span>UI/UX 設計與實作</span><small>Experience</small></div>
+            <div class="row"><span>Dashboard / 資料視覺化</span><small>Visualization</small></div>
+            <div class="row"><span>效能優化與架構</span><small>Engineering</small></div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>團隊角色</h3>
+          <div class="role-list">
+            <div class="role-item"><b>需求整合</b><span>收集使用者需求，釐清問題與操作流程</span></div>
+            <div class="role-item"><b>方案設計</b><span>將需求轉化為 UI 示意與可執行功能方案</span></div>
+            <div class="role-item"><b>開發協作</b><span>負責前端實作，協調後端與跨角色問題</span></div>
+            <div class="role-item"><b>進度推進</b><span>掌握任務進度，協助排除開發阻礙</span></div>
+            <div class="role-item"><b>功能落地</b><span>推進功能完成、驗證與持續改善</span></div>
+          </div>
+          <div class="statement">從需求釐清、方案討論到開發協作，讓需求真正落地成可用的功能。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">02 / 承 · Core Results</div>
+        <div><h2>2026 核心成果</h2><div class="lead">從功能開發，延伸到效率提升、流程簡化與跨系統應用。</div></div>
+      </div>
+      <div class="results">
+        <article class="card result reveal"><div><div class="num">01</div><h3>AI × FiDraw</h3><p>AI 輔助電力架構圖生成，降低大量 Diagram 建置的重複工作。</p></div><div><div class="metric">↓ 50%</div><span class="tag">開發時間降低</span></div></article>
+        <article class="card result reveal"><div><div class="num">02</div><h3>環境閾值 Profile</h3><p>Profile 快速切換，降低不同產品測試環境的設定與切換成本。</p></div><div><div class="metric">約 10 秒</div><span class="tag">完成多設備切換</span></div></article>
+        <article class="card result reveal"><div><div class="num">03</div><h3>工單 2.0</h3><p>Mantify 行動通知，將事件從 Web 延伸至通知、建立工單與進度追蹤。</p></div><div><div class="metric">App / Web</div><span class="tag">行動工單追蹤</span></div></article>
+        <article class="card result reveal"><div><div class="num">04</div><h3>Excel Export</h3><p>監控數據可匯出，用於整理、比對與第三方系統延伸應用。</p></div><div><div class="metric">Data</div><span class="tag">延伸分析</span></div></article>
+        <article class="card result reveal"><div><div class="num">05</div><h3>AI × Workflow</h3><p>從 Prototype 到頁面實作，縮短需求對齊與重複開發時間。</p></div><div><div class="metric">Faster</div><span class="tag">開發提速</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">03 / 轉 · Change the workflow</div>
+        <div><h2>真正的改變，不只是功能變多，<br>而是工作方式開始改變。</h2></div>
+      </div>
+      <div class="spotlight">
+        <article class="card feature reveal">
+          <div class="eyebrow">AI × FiDraw</div>
+          <h3>從人工建圖，走向輔助解析＋程式化生成。</h3>
+          <p>透過 AI 輔助圖面分析與程式化生成，降低大量監控 Diagram 建置的重複工作與人為錯誤；RD 仍保留確認與品質判斷。</p>
+          <div class="flow">
+            <div class="flow-item"><div class="flow-no">01</div><span>現場電力架構簡圖</span></div>
+            <div class="flow-item"><div class="flow-no">02</div><span>AI 輔助解析節點與連接</span></div>
+            <div class="flow-item"><div class="flow-no">03</div><span>轉為結構化資料</span></div>
+            <div class="flow-item"><div class="flow-no">04</div><span>Diagram 程式化生成</span></div>
+          </div>
+          <div class="metrics">
+            <div class="metric-box"><strong>↓ 50%</strong><small>開發時間</small></div>
+            <div class="metric-box"><strong>20% → 5%</strong><small>錯誤率</small></div>
+          </div>
+        </article>
+        <div class="stack">
+          <article class="card mini reveal"><div class="mini-accent">Profile</div><h3>把複雜設定留在系統裡。</h3><p>將逐台、逐項設定轉為 Profile 標準流程；使用者只需選擇對應 Profile，即可快速完成環境閾值切換。</p></article>
+          <article class="card mini reveal"><div class="mini-accent">Mantify</div><h3>讓事件主動找到人。</h3><p>從 BMS Web 延伸到 Desktop / Web / App，事件通知、建立工單與處理追蹤不再受限於場域。</p></article>
+          <article class="card mini reveal"><div class="mini-accent">Excel Export</div><h3>讓數據離開畫面後繼續產生價值。</h3><p>匯出 BMS 監控數據，支援整理、比對與第三方系統後續處理。</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">04 / 合 · AI × Workflow</div>
+        <div><h2>AI 不代替判斷，<br>它讓工程師把時間放在更重要的地方。</h2><div class="lead">在適合的開發階段導入 AI，縮短需求溝通與重複實作時間；工程師仍負責需求判斷、整合與品質。</div></div>
+      </div>
+      <div class="workflow">
+        <div class="step reveal"><i>01</i><h4>需求確認</h4><p>先釐清問題、操作流程與期待結果。</p></div>
+        <div class="step reveal"><i>02</i><h4>即時 Prototype</h4><p>用畫面具體化雙方想法，降低溝通落差。</p></div>
+        <div class="step reveal"><i>03</i><h4>AI 輔助實作</h4><p>協助頁面結構、CSS 與重複性調整。</p></div>
+        <div class="step reveal"><i>04</i><h4>工程師 Review</h4><p>負責整合、設計一致性與最終品質。</p></div>
+      </div>
+      <div class="rules reveal">
+        <span>Existing Component</span><span>Color / Spacing</span><span>Typography</span><span>Design Rules</span><span>Prompt Engineering</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="future">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">05 / Next</div>
+        <div><h2>下一階段，<br>把個人經驗變成團隊可共享的能力。</h2></div>
+      </div>
+      <div class="future">
+        <article class="card reveal"><div class="index">01 / UI & UX</div><h3>簡化複雜流程</h3><p>兼顧不同使用情境，讓操作更直覺、簡單，也更容易維護。</p></article>
+        <article class="card reveal"><div class="index">02 / PROJECT</div><h3>強化專案推進</h3><p>提升任務規劃、進度掌控與研發工作統整，讓跨角色協作更穩定。</p></article>
+        <article class="card reveal"><div class="index">03 / AI × TEAM</div><h3>沉澱可複製的方法</h3><p>整理可重複使用的 Workflow、Prompt 與規範，讓 AI 實務經驗可以被團隊延續。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap reveal">
+      <div class="kicker">2026 / Max</div>
+      <h2>把複雜留給技術，<br><span class="accent">把簡單留給使用者。</span></h2>
+      <p>持續將 AI 融入工作流程，與團隊一起提升開發效率與產品品質。</p>
+      <div class="sig">FII CESBG · CLOUD PLATFORM</div>
+    </div>
+  </section>
+</main>
+
 <script>
-const tabs=[...document.querySelectorAll('[role=tab]')];function selectTab(tab){tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on})}tabs.forEach((t,i)=>{t.addEventListener('click',()=>selectTab(t));t.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n!==undefined){e.preventDefault();selectTab(tabs[n]);tabs[n].focus()}})});
-const raw=[[204,28],[54,116],[380,81],[283,176],[50,222],[420,220]],clean=[[224,18],[112,108],[336,108],[24,218],[224,218],[424,218]],edges=[[0,1],[0,2],[1,3],[1,4],[2,5]];function graph(opt){const pts=opt?clean:raw;pts.forEach((p,i)=>document.getElementById('node'+i).setAttribute('transform',`translate(${p[0]} ${p[1]})`));edges.forEach(([a,b],i)=>{let x1=pts[a][0]+44,y1=pts[a][1]+38,x2=pts[b][0]+44,y2=pts[b][1];document.getElementById('wire'+i).setAttribute('d',opt?`M${x1},${y1} V${(y1+y2)/2} H${x2} V${y2}`:`M${x1},${y1} L${x2},${y2}`)});document.getElementById('graphStatus').textContent=opt?'排列節點，整理線段轉折':'相同節點與連接資料';['rawGraph','cleanGraph'].forEach((id,i)=>{const active=i===Number(opt);document.getElementById(id).classList.toggle('active',active);document.getElementById(id).setAttribute('aria-pressed',active)})}graph(false);document.getElementById('rawGraph').onclick=()=>graph(false);document.getElementById('cleanGraph').onclick=()=>graph(true);
-let profile=null;const grid=document.getElementById('params');for(let i=1;i<=16;i++){const p=document.createElement('div');p.className='param';p.textContent='P'+String(i).padStart(2,'0');grid.append(p)}const params=[...grid.children];function resetProfile(){profile=null;params.forEach(p=>p.classList.remove('set'));document.querySelectorAll('[data-profile]').forEach(b=>b.setAttribute('aria-pressed','false'));document.getElementById('applyProfile').disabled=true;document.getElementById('stepCount').textContent='0 / 2 步';document.getElementById('profileStatus').textContent='已還原示意，請選擇一組 Profile。'}document.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{profile=b.dataset.profile;params.forEach(p=>p.classList.remove('set'));document.querySelectorAll('[data-profile]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('applyProfile').disabled=false;document.getElementById('stepCount').textContent='1 / 2 步';document.getElementById('profileStatus').textContent='已選擇測試環境 '+profile+'，待批次套用。'});document.getElementById('applyProfile').onclick=()=>{if(!profile)return;params.forEach(p=>p.classList.add('set'));document.getElementById('stepCount').textContent='2 / 2 步';document.getElementById('profileStatus').textContent='Ready · 16 項參數已批次套用（示意）。';document.getElementById('applyProfile').disabled=true};document.getElementById('restoreProfile').onclick=resetProfile;
-let eventStep=0;const eventCopy=[['監控事件產生','BMS 偵測到事件，後續由通知與工單流程串接處理。'],['相關人員接收通知','透過 Mantify Desktop / Web / App 掌握事件狀況。'],['建立工單','讓事件接上具體處理流程，留下可追蹤的工單。'],['持續追蹤進度','透過工單掌握處理進度，將監控延伸到後續行動。']];function eventRender(){document.querySelectorAll('#orderSteps span').forEach((s,i)=>s.classList.toggle('current',i===eventStep));document.getElementById('eventTitle').textContent=eventCopy[eventStep][0];document.getElementById('eventBody').textContent=eventCopy[eventStep][1];document.getElementById('nextEvent').disabled=eventStep===3}document.getElementById('nextEvent').onclick=()=>{eventStep=Math.min(3,eventStep+1);eventRender()};document.getElementById('resetEvent').onclick=()=>{eventStep=0;eventRender()};
-const originalProto=document.getElementById('protoView').innerHTML;function proto(on){document.getElementById('protoView').innerHTML=on?'<div class="protoHeader">套用環境 Profile</div><div class="protoRow"><span>選擇 Profile</span><span class="field">對應產品環境</span></div><div class="protoResult">Apply 批次套用 · 將逐項參數設定整合為單一操作</div>':originalProto;['protoBefore','protoAfter'].forEach((id,i)=>{const active=i===Number(on);document.getElementById(id).classList.toggle('active',active);document.getElementById(id).setAttribute('aria-pressed',String(active))})}document.getElementById('protoBefore').onclick=()=>proto(false);document.getElementById('protoAfter').onclick=()=>proto(true);
-function progress(){const total=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(total>0?scrollY/total*100:0)+'%'}addEventListener('scroll',progress,{passive:true});addEventListener('resize',progress);progress();
-</script></body></html>
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
+  };
+  addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      if(entry.isIntersecting){ entry.target.classList.add('show'); io.unobserve(entry.target); }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay = `${Math.min(i%5,4)*45}ms`;io.observe(el)});
+</script>
+</body>
+</html>
