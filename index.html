@@ -478,6 +478,93 @@
     letter-spacing:.02em;
   }
 
+
+  /* Subtle front-end engineering identity */
+  .hero-wireframe{
+    position:absolute;
+    right:4.5%;
+    bottom:8%;
+    width:min(360px,32vw);
+    aspect-ratio:1.5;
+    border:1px solid rgba(125,211,252,.07);
+    border-radius:18px;
+    opacity:.55;
+    z-index:-1;
+    pointer-events:none;
+  }
+  .hero-wireframe:before,
+  .hero-wireframe:after{
+    content:"";
+    position:absolute;
+    left:22px;
+    right:22px;
+    height:1px;
+    background:rgba(125,211,252,.065);
+  }
+  .hero-wireframe:before{top:48px}
+  .hero-wireframe:after{top:82px}
+  .wf-dot{
+    position:absolute;
+    width:6px;height:6px;border-radius:50%;
+    background:rgba(125,211,252,.20);
+    box-shadow:0 0 14px rgba(125,211,252,.12);
+  }
+  .wf-dot.a{left:24px;top:22px}
+  .wf-dot.b{left:40px;top:22px}
+  .wf-dot.c{left:56px;top:22px}
+  .wf-block{
+    position:absolute;border:1px solid rgba(255,255,255,.05);
+    border-radius:8px;background:rgba(255,255,255,.012)
+  }
+  .wf-block.one{left:22px;top:104px;width:38%;height:54px}
+  .wf-block.two{right:22px;top:104px;width:42%;height:54px}
+  .wf-block.three{left:22px;right:22px;bottom:22px;height:34px}
+
+  .micro-code{
+    display:inline-flex;align-items:center;gap:7px;
+    color:#71879a;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .micro-code:before{
+    content:"</>";color:rgba(125,211,252,.58);font-size:10px;letter-spacing:0;
+  }
+
+  .result .node-line{
+    display:flex;align-items:center;gap:6px;margin-top:12px;
+    color:#60778b;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .result .node-line:before,
+  .result .node-line:after{
+    content:"";height:1px;background:rgba(125,211,252,.08)
+  }
+  .result .node-line:before{width:24px}
+  .result .node-line:after{flex:1}
+
+  .flow-item{position:relative}
+  .flow-item:not(:last-child):after{
+    content:"";
+    position:absolute;
+    left:17px;
+    top:46px;
+    bottom:-12px;
+    width:1px;
+    background:linear-gradient(to bottom,rgba(125,211,252,.16),rgba(125,211,252,.03));
+  }
+
+  .step{position:relative;overflow:hidden}
+  .step:after{
+    content:"";
+    position:absolute;
+    right:14px;top:14px;
+    width:24px;height:14px;
+    border-top:1px solid rgba(125,211,252,.08);
+    border-right:1px solid rgba(125,211,252,.08);
+    border-radius:0 6px 0 0;
+  }
+
+  .closing .micro-signature{
+    margin-top:22px;color:#50677a;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  }
+
   @media (max-width:1060px){
     .hero-grid,.section-head,.role-grid,.spotlight{grid-template-columns:1fr}
     .hero-meta{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}
@@ -521,6 +608,10 @@
 
 <main>
   <section class="scene hero" id="top">
+    <div class="hero-wireframe" aria-hidden="true">
+      <span class="wf-dot a"></span><span class="wf-dot b"></span><span class="wf-dot c"></span>
+      <span class="wf-block one"></span><span class="wf-block two"></span><span class="wf-block three"></span>
+    </div>
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow reveal">2026 PERFORMANCE REVIEW · FRONT-END ENGINEER</div>
@@ -547,7 +638,7 @@
         <span class="role">前端開發 · 專案工程師</span>
         <span class="meta-line">雲監控部</span>
         <span class="meta-line">Angular / React / TypeScript / JavaScript</span>
-        <span class="meta-line">UI/UX · Dashboard · Data Visualization</span>
+        <span class="meta-line">UI/UX · Dashboard · Data Visualization</span><br><span class="micro-code">Product-minded Front-end</span>
       </div>
     </div>
   </section>
@@ -602,27 +693,27 @@
 
       <div class="results">
         <article class="card result reveal">
-          <div><div class="num">01 / AI</div><div class="function-title">AI × FiDraw｜AI 輔助電力架構圖生成<em>將現場電力架構簡圖轉為監控 Diagram</em></div><p>AI 解析設備節點與連接關係，再透過程式化方式生成監控圖面，降低大量人工建圖的重複工作與錯誤。</p></div>
+          <div><div class="num">01 / AI</div><div class="function-title">AI × FiDraw｜電力架構圖生成<em>將現場電力架構簡圖轉為監控 Diagram</em></div><div class="node-line">AI / Diagram / Generation</div><p>AI 解析設備節點與連接關係，再透過程式化方式生成監控圖面，降低大量人工建圖的重複工作與錯誤。</p></div>
           <div><div class="metric">↓ 50%</div><span class="tag">開發時間降低</span></div>
         </article>
 
         <article class="card result reveal">
-          <div><div class="num">02 / FLOW</div><div class="function-title">測試環境閾值 Profile｜多設備閾值快速切換<em>將不同產品的設備閾值整理成可批次套用的 Profile</em></div><p>使用者選擇對應 Profile 後，可批次 Apply、驗證 Ready / Alarm，測試完成後再 Restore 還原。</p></div>
+          <div><div class="num">02 / FLOW</div><div class="function-title">測試環境閾值 Profile｜多設備快速切換<em>將不同產品的設備閾值整理成可批次套用的 Profile</em></div><div class="node-line">Profile / Apply / Restore</div><p>使用者選擇對應 Profile 後，可批次 Apply、驗證 Ready / Alarm，測試完成後再 Restore 還原。</p></div>
           <div><div class="metric">約 10 秒</div><span class="tag">完成多設備切換</span></div>
         </article>
 
         <article class="card result reveal">
-          <div><div class="num">03 / INTEGRATION</div><div class="function-title">工單 2.0 × Mantify｜事件通知與行動工單追蹤<em>BMS 事件從 Web 延伸到 Desktop / Web / App</em></div><p>事件發生後透過 Mantify 即時通知相關人員，並串接建立工單與處理進度追蹤。</p></div>
+          <div><div class="num">03 / INTEGRATION</div><div class="function-title">工單 2.0 × Mantify｜事件通知與行動工單追蹤<em>BMS 事件從 Web 延伸到 Desktop / Web / App</em></div><div class="node-line">Event / Notify / Track</div><p>事件發生後透過 Mantify 即時通知相關人員，並串接建立工單與處理進度追蹤。</p></div>
           <div><div class="metric">App / Web</div><span class="tag">行動工單追蹤</span></div>
         </article>
 
         <article class="card result reveal">
-          <div><div class="num">04 / DATA</div><div class="function-title">Excel Export｜BMS 監控數據匯出與延伸分析<em>讓監控資料離開畫面後仍可被整理與使用</em></div><p>將 BMS 監控數據整理為 Excel，供使用者彙整、比對，或交由第三方系統進一步分析。</p></div>
+          <div><div class="num">04 / DATA</div><div class="function-title">Excel Export｜BMS 監控數據匯出與延伸分析<em>讓監控資料離開畫面後仍可被整理與使用</em></div><div class="node-line">Data / Export / Analysis</div><p>將 BMS 監控數據整理為 Excel，供使用者彙整、比對，或交由第三方系統進一步分析。</p></div>
           <div><div class="metric">Data</div><span class="tag">延伸分析</span></div>
         </article>
 
         <article class="card result reveal">
-          <div><div class="num">05 / AI</div><div class="function-title">AI × Workflow｜前端需求對齊與開發提速<em>Prototype → AI 輔助實作 → 工程師 Review</em></div><p>需求確認時先以 Prototype 具體化想法，實作階段由 AI 協助頁面與 CSS，再由工程師負責整合與品質。</p></div>
+          <div><div class="num">05 / AI</div><div class="function-title">AI × Workflow｜開發提速<em>Prototype → AI 輔助實作 → 工程師 Review</em></div><div class="node-line">Prototype / Implement / Review</div><p>需求確認時先以 Prototype 具體化想法，實作階段由 AI 協助頁面與 CSS，再由工程師負責整合與品質。</p></div>
           <div><div class="metric">Faster</div><span class="tag">開發提速</span></div>
         </article>
       </div>
@@ -695,7 +786,7 @@
         <div class="step reveal"><i>03</i><h4>AI 輔助實作</h4><p>協助頁面結構、CSS 與重複性調整。</p></div>
         <div class="step reveal"><i>04</i><h4>工程師 Review</h4><p>負責整合、設計一致性與最終品質。</p></div>
       </div>
-      <div class="workflow-note reveal"><b>重點：</b>不是「會用 AI」，而是把 AI 放進可重複、可控制、能維持品質的開發流程。</div>
+      <div class="workflow-note reveal"><b>重點：</b>將 AI 納入可重複、可控且兼顧品質的開發流程。</div>
     </div>
   </section>
 
@@ -736,7 +827,7 @@
       <div class="kicker">2026 / Max</div>
       <h2>從完成功能，<br><span class="accent">走向提升產品與團隊效能。</span></h2>
       <p>持續累積開發經驗，將有效的方法沉澱為可延續、可共享的團隊能力。</p>
-      <div class="sig">FII CESBG · CLOUD PLATFORM</div>
+      <div class="sig">FII CESBG · CLOUD PLATFORM</div><div class="micro-signature">&lt;/2026 performance&gt;</div>
     </div>
   </section>
 </main>
