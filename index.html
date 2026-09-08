@@ -3,180 +3,566 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>2026 個人績效｜Max</title>
+<meta name="theme-color" content="#09111f" />
+<title>2026 個人績效｜Max · 從需求到落地</title>
 <style>
   :root{
-    --bg:#0b1220;
-    --panel:#101a2d;
-    --panel-2:#0f1727;
-    --text:#edf2f7;
-    --muted:#93a4b8;
-    --line:rgba(255,255,255,.08);
+    --bg:#09111f;
+    --bg-2:#0b1424;
+    --panel:#101b2d;
+    --panel-hi:#142238;
+    --text:#f2f5f8;
+    --soft:#c4cfda;
+    --muted:#8fa0b2;
+    --dim:#65788d;
+    --line:rgba(255,255,255,.085);
     --accent:#7dd3fc;
-    --warm:#e6c98d;
-    --soft:#d8e2ec;
-    --max:1180px;
+    --accent-soft:rgba(125,211,252,.08);
+    --warm:#e7c98e;
+    --warm-soft:rgba(231,201,142,.08);
+    --max:1280px;
+    --nav-h:62px;
   }
+
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0;
-    background:
-      radial-gradient(1000px 600px at 85% -5%, rgba(125,211,252,.09), transparent 60%),
-      linear-gradient(180deg,#0a1120 0%, #0b1220 48%, #0a101c 100%);
     color:var(--text);
-    font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-    letter-spacing:.01em;
+    background:
+      radial-gradient(900px 560px at 86% -8%, rgba(125,211,252,.09), transparent 62%),
+      radial-gradient(700px 480px at -10% 54%, rgba(231,201,142,.035), transparent 70%),
+      linear-gradient(180deg,#08101d 0%,var(--bg) 45%,#08101b 100%);
+    font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    letter-spacing:.012em;
+    overflow-x:hidden;
   }
+
   a{color:inherit;text-decoration:none}
-  .progress{position:fixed;left:0;top:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--warm));width:0;z-index:99}
+  button{font:inherit}
+
+  .progress{
+    position:fixed;left:0;top:0;height:2px;width:0;z-index:120;
+    background:linear-gradient(90deg,var(--accent),var(--warm));
+    box-shadow:0 0 18px rgba(125,211,252,.22);
+  }
+
   .nav{
-    position:fixed;inset:20px 0 auto 0;z-index:50;pointer-events:none;
+    position:fixed;inset:14px 0 auto 0;z-index:100;
+    pointer-events:none;
   }
   .nav-inner{
-    width:min(calc(100% - 32px),var(--max));margin:auto;display:flex;justify-content:space-between;align-items:center;
-    color:#a9b8ca;font-size:12px;text-transform:uppercase;letter-spacing:.16em;
+    width:min(calc(100% - 34px),var(--max));height:48px;margin:auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 15px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    background:rgba(9,17,31,.70);
+    backdrop-filter:blur(14px);
+    box-shadow:0 12px 40px rgba(0,0,0,.16);
+    color:#9caec0;font-size:11px;letter-spacing:.15em;text-transform:uppercase;
   }
-  .nav-inner > *{pointer-events:auto}
-  .brand{display:flex;gap:10px;align-items:center}
-  .brand-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(125,211,252,.65)}
-  .jump{display:flex;gap:18px}
-  .jump a{opacity:.72;transition:.2s}
-  .jump a:hover{opacity:1}
+  .nav-inner>*{pointer-events:auto}
+  .brand{display:flex;gap:10px;align-items:center;white-space:nowrap}
+  .brand-dot{
+    width:7px;height:7px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 16px rgba(125,211,252,.55)
+  }
+  .jump{display:flex;gap:5px}
+  .jump a{
+    padding:8px 10px;border-radius:9px;color:#8295a8;
+    transition:background .2s ease,color .2s ease
+  }
+  .jump a:hover,.jump a.active{background:rgba(255,255,255,.045);color:#dce5ed}
 
-  .wrap{width:min(calc(100% - 32px),var(--max));margin:auto}
-  .hero{min-height:100svh;display:grid;align-items:center;padding:120px 0 70px}
-  .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end}
-  .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px}
-  h1{font-size:clamp(52px,7vw,96px);line-height:.98;letter-spacing:-.055em;margin:0;max-width:900px;font-weight:720}
-  h1 .soft{color:#a9b8ca;font-weight:520}
-  .hero p{font-size:18px;line-height:1.85;color:#a9b8ca;max-width:720px;margin:32px 0 0}
-  .meta{border-top:1px solid var(--line);padding-top:20px;color:#8da0b5;font-size:13px;line-height:1.9}
-  .meta strong{color:#dce6ef;font-weight:600}
-  .hero-mark{margin-top:42px;display:inline-flex;align-items:center;gap:10px;color:#b9c7d6;font-size:13px}
-  .hero-mark:before{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+  .wrap{width:min(calc(100% - 44px),var(--max));margin:auto}
 
-  section{padding:120px 0;border-top:1px solid var(--line)}
-  .section-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:56px}
-  .kicker{color:#75869a;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding-top:8px}
-  h2{font-size:clamp(34px,4vw,58px);line-height:1.15;letter-spacing:-.035em;margin:0;font-weight:670}
-  .lead{color:#9fb0c2;font-size:17px;line-height:1.85;max-width:760px;margin-top:16px}
+  section.scene{
+    min-height:100svh;
+    display:grid;
+    align-items:center;
+    padding:96px 0 58px;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  section.scene:first-of-type{border-top:0}
 
-  .role-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
-  .card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(8px)}
-  .card h3{margin:0 0 18px;font-size:14px;color:#cbd7e3;letter-spacing:.08em;text-transform:uppercase}
-  .skill-list,.role-list{display:grid;gap:14px}
-  .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line);color:#dbe6ef}
-  .row:first-child{border-top:0;padding-top:0}
-  .row small{color:#7f93a8;font-size:12px;white-space:nowrap}
-  .role-item{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
-  .role-item:first-child{border-top:0;padding-top:0}
-  .role-item b{font-size:13px;color:var(--warm);font-weight:600}
-  .role-item span{color:#cbd7e3;line-height:1.7}
-  .statement{margin-top:18px;border-left:2px solid var(--accent);padding:16px 18px;color:#dce6ef;background:rgba(125,211,252,.04);border-radius:0 12px 12px 0}
+  .section-no{
+    position:absolute;right:max(22px,calc((100vw - var(--max))/2));top:78px;
+    font-size:clamp(54px,8vw,118px);line-height:1;font-weight:760;
+    letter-spacing:-.07em;color:rgba(255,255,255,.022);user-select:none;pointer-events:none
+  }
 
-  .results{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-  .result{min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s transform,.25s border-color}
-  .result:hover{transform:translateY(-5px);border-color:rgba(125,211,252,.3)}
-  .result .num{font-size:11px;letter-spacing:.18em;color:#6f8399}
-  .result .metric{font-size:30px;font-weight:700;letter-spacing:-.03em}
-  .result h3{font-size:18px;text-transform:none;letter-spacing:0;margin:10px 0 8px}
-  .result p{color:#8fa2b6;line-height:1.7;font-size:14px;margin:0}
-  .tag{display:inline-block;margin-top:16px;color:#87a0b8;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .hero{min-height:100svh!important}
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);
+    gap:64px;align-items:end
+  }
+  .eyebrow{
+    color:var(--accent);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    margin-bottom:24px
+  }
+  h1{
+    font-size:clamp(60px,7.4vw,106px);line-height:.98;letter-spacing:-.058em;
+    margin:0;max-width:1000px;font-weight:730
+  }
+  h1 .soft{color:#b0bdc9;font-weight:540}
+  .hero p{
+    font-size:clamp(17px,1.35vw,21px);line-height:1.9;color:#a6b5c4;
+    max-width:790px;margin:34px 0 0
+  }
+  .hero .keyline{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:34px
+  }
+  .hero .keyline span{
+    border:1px solid rgba(255,255,255,.075);border-radius:999px;
+    padding:8px 11px;font-size:12px;color:#91a3b5;background:rgba(255,255,255,.018)
+  }
+  .hero-meta{
+    align-self:end;padding:24px 0 4px 24px;border-left:1px solid var(--line);
+    color:#8fa1b4;font-size:14px;line-height:2
+  }
+  .hero-meta strong{color:#edf3f8;font-size:18px;font-weight:650}
+  .meeting-hint{
+    margin-top:42px;color:#617489;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px
+  }
+  .meeting-hint:before{content:"";width:38px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
 
-  .spotlight{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}
-  .feature{min-height:500px;position:relative;overflow:hidden}
-  .feature:after{content:"";position:absolute;width:320px;height:320px;border:1px solid rgba(125,211,252,.08);border-radius:50%;right:-80px;bottom:-90px}
-  .feature h3{font-size:34px;letter-spacing:-.03em;text-transform:none;margin-bottom:16px}
-  .feature p{color:#9fb0c2;line-height:1.85;max-width:650px}
-  .flow{display:grid;gap:10px;margin-top:38px}
-  .flow-item{display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+  .section-head{
+    display:grid;grid-template-columns:190px minmax(0,1fr);gap:34px;align-items:start;
+    margin-bottom:42px
+  }
+  .section-head.no-kicker{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .kicker{
+    color:#6f8297;font-size:12px;letter-spacing:.19em;text-transform:uppercase;padding-top:9px
+  }
+  h2{
+    font-size:clamp(40px,4.5vw,64px);line-height:1.12;letter-spacing:-.04em;
+    margin:0;font-weight:690;max-width:940px
+  }
+  .lead{
+    color:#9dafc0;font-size:clamp(16px,1.35vw,19px);line-height:1.85;
+    max-width:820px;margin-top:15px
+  }
+
+  .card{
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.022));
+    border:1px solid var(--line);border-radius:20px;padding:30px;
+    box-shadow:0 18px 50px rgba(0,0,0,.11)
+  }
+  .card h3{
+    margin:0 0 18px;font-size:14px;color:#d3dde7;letter-spacing:.08em;text-transform:uppercase
+  }
+
+  /* ROLE */
+  .role-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:18px}
+  .skill-list,.role-list{display:grid;gap:0}
+  .row{
+    display:flex;justify-content:space-between;gap:16px;padding:16px 0;
+    border-top:1px solid var(--line);color:#e0e8ef;font-size:16px
+  }
+  .row:first-child{border-top:0;padding-top:2px}
+  .row small{color:#71859a;font-size:11px;white-space:nowrap;letter-spacing:.08em;text-transform:uppercase}
+  .role-item{
+    display:grid;grid-template-columns:104px 1fr;gap:16px;padding:15px 0;border-top:1px solid var(--line)
+  }
+  .role-item:first-child{border-top:0;padding-top:2px}
+  .role-item b{font-size:13px;color:var(--warm);font-weight:650;letter-spacing:.04em}
+  .role-item span{color:#d0dae4;line-height:1.65;font-size:15px}
+  .statement{
+    margin-top:18px;border-left:2px solid var(--accent);padding:16px 18px;
+    color:#e2eaf1;background:var(--accent-soft);border-radius:0 12px 12px 0;
+    line-height:1.7;font-size:16px
+  }
+
+  /* RESULTS: 3 + 2 layout for screen sharing */
+  .results{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:15px
+  }
+  .result{
+    grid-column:span 2;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden
+  }
+  .result:nth-child(4),.result:nth-child(5){grid-column:span 3;min-height:225px}
+  .result:after{
+    content:"";position:absolute;inset:auto -70px -90px auto;width:180px;height:180px;
+    border:1px solid rgba(125,211,252,.055);border-radius:50%;pointer-events:none
+  }
+  .result .num{font-size:11px;letter-spacing:.18em;color:#62778c}
+  .result h3{
+    font-size:21px;text-transform:none;letter-spacing:-.01em;margin:12px 0 10px;color:#eef3f7
+  }
+  .result p{color:#97a8b9;line-height:1.72;font-size:14.5px;margin:0;max-width:95%}
+  .metric{
+    font-size:clamp(34px,3vw,45px);font-weight:740;letter-spacing:-.045em;color:var(--warm);
+    margin-top:24px
+  }
+  .tag{
+    display:block;margin-top:4px;color:#70859a;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase
+  }
+
+  /* SPOTLIGHT */
+  .spotlight{display:grid;grid-template-columns:1.12fr .88fr;gap:18px}
+  .feature{min-height:520px;position:relative;overflow:hidden}
+  .feature:after{
+    content:"";position:absolute;width:380px;height:380px;border:1px solid rgba(125,211,252,.06);
+    border-radius:50%;right:-120px;bottom:-150px;pointer-events:none
+  }
+  .feature h3{
+    font-size:clamp(30px,3vw,42px);line-height:1.2;letter-spacing:-.035em;
+    text-transform:none;margin:0 0 15px;max-width:720px
+  }
+  .feature p{color:#9eb0c1;line-height:1.82;max-width:700px;font-size:15.5px}
+  .flow{display:grid;gap:0;margin-top:30px}
+  .flow-item{
+    display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:center;padding:12px 0;
+    border-top:1px solid var(--line)
+  }
   .flow-item:first-child{border-top:0}
-  .flow-no{width:34px;height:34px;border:1px solid rgba(125,211,252,.25);display:grid;place-items:center;border-radius:50%;font-size:11px;color:var(--accent)}
-  .flow-item span{color:#d4dee8}
-  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
-  .metric-box{padding:18px;border-radius:14px;background:#0b1424;border:1px solid var(--line)}
-  .metric-box strong{font-size:30px;display:block;letter-spacing:-.03em}
-  .metric-box small{color:#7f93a8}
+  .flow-no{
+    width:34px;height:34px;border:1px solid rgba(125,211,252,.24);display:grid;place-items:center;
+    border-radius:50%;font-size:10px;color:var(--accent);background:rgba(125,211,252,.025)
+  }
+  .flow-item span{color:#d6e0e9;font-size:15px}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+  .metric-box{
+    padding:18px 20px;border-radius:14px;background:#0b1525;border:1px solid var(--line)
+  }
+  .metric-box strong{
+    font-size:clamp(34px,3vw,46px);display:block;letter-spacing:-.045em;color:var(--warm)
+  }
+  .metric-box small{color:#71869a;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 
-  .stack{display:grid;gap:18px}
-  .mini{min-height:150px}
-  .mini h3{font-size:20px;text-transform:none;letter-spacing:0;margin-bottom:8px}
-  .mini p{margin:0;color:#93a4b8;line-height:1.7;font-size:14px}
-  .mini .mini-accent{color:var(--accent);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+  .stack{display:grid;grid-template-rows:repeat(3,1fr);gap:14px}
+  .mini{min-height:154px;padding:24px 26px}
+  .mini .mini-accent{
+    color:var(--accent);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px
+  }
+  .mini h3{
+    font-size:20px;text-transform:none;letter-spacing:-.015em;margin:0 0 7px;color:#eef3f7
+  }
+  .mini p{margin:0;color:#92a4b6;line-height:1.68;font-size:13.5px}
 
-  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
-  .step{padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
-  .step i{font-style:normal;color:#6d8298;font-size:11px;letter-spacing:.16em}
-  .step h4{font-size:18px;margin:12px 0 8px}
-  .step p{color:#8fa2b6;font-size:13px;line-height:1.7;margin:0}
-  .rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .rules span{border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:12px;color:#a8b7c7;background:rgba(255,255,255,.02)}
+  /* WORKFLOW */
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:28px}
+  .step{
+    padding:26px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018));
+    min-height:205px
+  }
+  .step i{font-style:normal;color:#64798e;font-size:10.5px;letter-spacing:.16em}
+  .step h4{font-size:21px;margin:16px 0 9px;color:#f0f4f7}
+  .step p{color:#93a5b7;font-size:14px;line-height:1.72;margin:0}
+  .rules{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .rules span{
+    border:1px solid var(--line);border-radius:999px;padding:8px 11px;
+    font-size:11px;color:#9aacbd;background:rgba(255,255,255,.018)
+  }
+  .workflow-note{
+    margin-top:22px;color:#d5dee7;font-size:16px;line-height:1.7;
+    border-left:2px solid var(--accent);padding-left:16px
+  }
+  .workflow-note b{color:var(--accent);font-weight:650}
 
+  /* FUTURE */
   .future{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .future h3{font-size:22px;text-transform:none;letter-spacing:0;margin-bottom:10px}
-  .future p{color:#94a7ba;line-height:1.75;margin:0}
-  .future .index{font-size:11px;color:var(--warm);letter-spacing:.18em;margin-bottom:40px}
+  .future .card{min-height:270px}
+  .future .index{font-size:10.5px;color:var(--warm);letter-spacing:.17em;margin-bottom:46px}
+  .future h3{font-size:23px;text-transform:none;letter-spacing:-.02em;margin:0 0 11px;color:#f0f4f7}
+  .future p{color:#94a6b8;line-height:1.78;margin:0;font-size:14.5px}
 
-  .closing{min-height:78svh;display:grid;align-items:center;border-top:1px solid var(--line)}
-  .closing h2{font-size:clamp(48px,6.8vw,88px);max-width:950px;line-height:1.06}
+  /* CLOSING */
+  .closing{min-height:100svh!important}
+  .closing h2{
+    font-size:clamp(58px,7vw,102px);max-width:1040px;line-height:1.02;letter-spacing:-.055em
+  }
   .closing .accent{color:var(--accent)}
-  .closing p{font-size:18px;color:#8ea1b5;max-width:760px;line-height:1.8;margin-top:26px}
-  .sig{margin-top:50px;color:#6f8194;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .closing p{
+    font-size:clamp(17px,1.35vw,21px);color:#94a6b8;max-width:820px;line-height:1.85;margin-top:28px
+  }
+  .sig{margin-top:54px;color:#64778b;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  /* Less animation for online meetings */
+  .reveal{
+    opacity:0;transform:translateY(10px);
+    transition:opacity .42s ease,transform .42s ease
+  }
   .reveal.show{opacity:1;transform:none}
-  @media (max-width:980px){
+
+
+  .hero{
+    min-height:100svh!important;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(820px 520px at 78% 18%, rgba(125,211,252,.10), transparent 64%),
+      radial-gradient(620px 420px at 16% 88%, rgba(231,201,142,.045), transparent 72%),
+      linear-gradient(180deg,#050a12 0%,#07101c 52%,#09111f 100%);
+    isolation:isolate;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background-image:
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 84%);
+    pointer-events:none;
+  }
+  .hero:after{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-120px;
+    top:14%;
+    border:1px solid rgba(125,211,252,.06);
+    border-radius:50%;
+    box-shadow:
+      0 0 0 72px rgba(125,211,252,.018),
+      0 0 0 144px rgba(125,211,252,.010);
+    z-index:-1;
+    pointer-events:none;
+  }
+  .hero-grid{
+    min-height:calc(100svh - 154px);
+    display:grid;
+    grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);
+    gap:64px;
+    align-items:end;
+  }
+  .hero .eyebrow{
+    color:#8edcff;
+    font-size:11px;
+    letter-spacing:.24em;
+    margin-bottom:28px;
+  }
+  .hero h1{
+    max-width:1040px;
+    text-wrap:balance;
+  }
+  .hero h1 .soft{
+    color:#b8c4d0;
+  }
+  .hero .hero-sub{
+    max-width:760px;
+    margin-top:32px;
+    color:#9faffe;
+  }
+  .hero .hero-rule{
+    width:min(720px,100%);
+    height:1px;
+    margin:34px 0 26px;
+    background:linear-gradient(90deg,rgba(125,211,252,.55),rgba(125,211,252,.08),transparent);
+  }
+  .hero .hero-focus{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px 28px;
+    color:#7f91a3;
+    font-size:12px;
+    letter-spacing:.08em;
+  }
+  .hero .hero-focus span strong{
+    color:#d7e1ea;
+    font-weight:620;
+  }
+  .hero-meta{
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:20px;
+    padding:30px 32px;
+    backdrop-filter:blur(8px);
+    color:#c6d2de;
+    font-size:16px;
+    line-height:1.95;
+    box-shadow:0 18px 46px rgba(0,0,0,.15);
+  }
+  .hero-meta strong{
+    display:block;
+    color:#ffffff;
+    font-size:34px;
+    line-height:1.1;
+    letter-spacing:-.035em;
+    margin-bottom:10px;
+  }
+  .hero-meta .role{
+    display:block;
+    color:var(--accent);
+    font-size:17px;
+    font-weight:650;
+    margin-bottom:16px;
+  }
+  .hero-meta .meta-line{
+    display:block;
+    color:#aab9c8;
+    font-size:14px;
+  }
+  .meeting-hint{
+    margin-top:36px;
+  }
+
+
+  .objective-box{
+    margin-top:30px;
+    width:min(820px,100%);
+    padding:20px 22px;
+    border:1px solid rgba(125,211,252,.13);
+    border-radius:16px;
+    background:rgba(125,211,252,.035);
+  }
+  .objective-box .label{
+    color:var(--accent);
+    font-size:10.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:9px;
+  }
+  .objective-box .title{
+    color:#edf3f8;
+    font-size:18px;
+    font-weight:650;
+    margin-bottom:8px;
+  }
+  .objective-box p{
+    margin:0;
+    color:#a8b7c6;
+    font-size:14.5px;
+    line-height:1.75;
+  }
+  .result-intro{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
+    margin:-10px 0 24px;
+  }
+  .result-intro .intro-item{
+    padding:16px 18px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.018);
+  }
+  .result-intro b{
+    display:block;
+    color:#eef3f7;
+    font-size:14px;
+    margin-bottom:5px;
+  }
+  .result-intro span{
+    color:#8295a8;
+    font-size:12.5px;
+    line-height:1.55;
+  }
+  .result .function-title{
+    font-size:18px;
+    line-height:1.35;
+    color:#f1f5f8;
+    margin:12px 0 10px;
+    font-weight:680;
+    letter-spacing:-.015em;
+  }
+  .result .function-title em{
+    display:block;
+    color:#8fa4b8;
+    font-size:12px;
+    font-style:normal;
+    font-weight:520;
+    margin-top:5px;
+    letter-spacing:.02em;
+  }
+
+  @media (max-width:1060px){
     .hero-grid,.section-head,.role-grid,.spotlight{grid-template-columns:1fr}
+    .hero-meta{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}
     .results{grid-template-columns:repeat(2,1fr)}
+    .result,.result:nth-child(4),.result:nth-child(5){grid-column:auto}
     .workflow,.future{grid-template-columns:1fr 1fr}
+    section.scene{padding:92px 0 60px}
+    .section-no{display:none}
+  }
+
+  @media (max-width:700px){
+    .wrap{width:min(calc(100% - 28px),var(--max))}
     .jump{display:none}
-    section{padding:90px 0}
-  }
-  @media (max-width:620px){
     .results,.workflow,.future{grid-template-columns:1fr}
-    .hero{padding-top:100px}
-    .card{padding:22px}
-    .role-item{grid-template-columns:78px 1fr}
+    .card{padding:23px}
+    .role-item{grid-template-columns:84px 1fr}
+    h1{font-size:clamp(50px,14vw,74px)}
   }
-  @media (prefers-reduced-motion: reduce){
-    *{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
   }
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
+
 <nav class="nav">
   <div class="nav-inner">
     <div class="brand"><span class="brand-dot"></span><span>MAX / 2026 PERFORMANCE</span></div>
-    <div class="jump"><a href="#role">Role</a><a href="#results">Results</a><a href="#ai">AI × Workflow</a><a href="#future">Next</a></div>
+    <div class="jump">
+      <a href="#role">Role</a>
+      <a href="#results">Results</a>
+      <a href="#change">Cases</a>
+      <a href="#ai">AI × Workflow</a>
+      <a href="#future">Next</a>
+    </div>
   </div>
 </nav>
 
 <main>
-  <section class="hero">
+  <section class="scene hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow reveal">Front-end Engineer · Cloud Monitoring</div>
-        <h1 class="reveal">把複雜留給技術，<br><span class="soft">把簡單留給使用者。</span></h1>
-        <p class="reveal">2026，我把前端工作從畫面實作往前後延伸：從需求釐清、方案設計、跨角色協作，到 AI 輔助與流程簡化。不是為了做更多功能，而是讓功能更容易被使用、被維護，也更快落地。</p>
-        <div class="hero-mark reveal">需求落地 · AI 提效 · 流程簡化 · 團隊效能</div>
+        <div class="eyebrow reveal">2026 PERFORMANCE REVIEW · FRONT-END ENGINEER</div>
+        <h1 class="reveal">從需求到落地，<br><span class="soft">讓每個功能更有價值。</span></h1>
+
+        <p class="hero-sub reveal">
+          透過 AI、流程優化與跨系統整合，持續提升開發效率與使用體驗。
+        </p>
+
+        <div class="hero-rule reveal"></div>
+
+        <div class="hero-focus reveal">
+          <span><strong>需求</strong> → 可執行方案</span>
+          <span><strong>技術</strong> → 更簡單操作</span>
+          <span><strong>AI</strong> → 可重複流程</span>
+          <span><strong>個人經驗</strong> → 團隊效能</span>
+        </div>
+
+        <div class="meeting-hint reveal">Scroll or use ↑ ↓ to navigate</div>
       </div>
-      <div class="meta reveal">
-        <strong>Max</strong><br>
-        雲監控部 · 專案工程師<br>
-        Angular / React / TypeScript / JavaScript<br>
-        UI/UX · Dashboard · Data Visualization
+
+      <div class="hero-meta reveal">
+        <strong>Max</strong>
+        <span class="role">前端開發 · 專案工程師</span>
+        <span class="meta-line">雲監控部</span>
+        <span class="meta-line">Angular / React / TypeScript / JavaScript</span>
+        <span class="meta-line">UI/UX · Dashboard · Data Visualization</span>
       </div>
     </div>
   </section>
 
-  <section id="role">
+  <section class="scene" id="role">
+    <div class="section-no">01</div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">01 / 起 · Role</div>
-        <div><h2>不只接需求，<br>而是把需求一路推進到功能落地。</h2><div class="lead">前端只是我的主要實作位置；實際角色更接近需求與開發之間的橋接者。</div></div>
+        <div>
+          <h2>前端是實作位置，<br>但角色不只停在 Coding。</h2>
+          <div class="lead">從需求釐清、方案討論、開發協作到進度推進，讓需求真正落地成可用的功能。</div>
+        </div>
       </div>
+
       <div class="role-grid">
         <div class="card reveal">
           <h3>專長</h3>
@@ -187,6 +573,7 @@
             <div class="row"><span>效能優化與架構</span><small>Engineering</small></div>
           </div>
         </div>
+
         <div class="card reveal">
           <h3>團隊角色</h3>
           <div class="role-list">
@@ -196,116 +583,222 @@
             <div class="role-item"><b>進度推進</b><span>掌握任務進度，協助排除開發阻礙</span></div>
             <div class="role-item"><b>功能落地</b><span>推進功能完成、驗證與持續改善</span></div>
           </div>
-          <div class="statement">從需求釐清、方案討論到開發協作，讓需求真正落地成可用的功能。</div>
+          <div class="statement">在團隊中串接需求與開發，讓「想法」可以持續往「可交付功能」推進。</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="results">
+  <section class="scene" id="results">
+    <div class="section-no">02</div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">02 / 承 · Core Results</div>
-        <div><h2>2026 核心成果</h2><div class="lead">從功能開發，延伸到效率提升、流程簡化與跨系統應用。</div></div>
+        <div>
+          <h2>2026 核心成果</h2>
+          <div class="lead">五項成果分別對應：開發效率、操作流程、事件處理、數據應用，以及 AI 導入前端工作流程。</div>
+        </div>
       </div>
+
       <div class="results">
-        <article class="card result reveal"><div><div class="num">01</div><h3>AI × FiDraw</h3><p>AI 輔助電力架構圖生成，降低大量 Diagram 建置的重複工作。</p></div><div><div class="metric">↓ 50%</div><span class="tag">開發時間降低</span></div></article>
-        <article class="card result reveal"><div><div class="num">02</div><h3>環境閾值 Profile</h3><p>Profile 快速切換，降低不同產品測試環境的設定與切換成本。</p></div><div><div class="metric">約 10 秒</div><span class="tag">完成多設備切換</span></div></article>
-        <article class="card result reveal"><div><div class="num">03</div><h3>工單 2.0</h3><p>Mantify 行動通知，將事件從 Web 延伸至通知、建立工單與進度追蹤。</p></div><div><div class="metric">App / Web</div><span class="tag">行動工單追蹤</span></div></article>
-        <article class="card result reveal"><div><div class="num">04</div><h3>Excel Export</h3><p>監控數據可匯出，用於整理、比對與第三方系統延伸應用。</p></div><div><div class="metric">Data</div><span class="tag">延伸分析</span></div></article>
-        <article class="card result reveal"><div><div class="num">05</div><h3>AI × Workflow</h3><p>從 Prototype 到頁面實作，縮短需求對齊與重複開發時間。</p></div><div><div class="metric">Faster</div><span class="tag">開發提速</span></div></article>
+        <article class="card result reveal">
+          <div><div class="num">01 / AI</div><div class="function-title">AI × FiDraw｜AI 輔助電力架構圖生成<em>將現場電力架構簡圖轉為監控 Diagram</em></div><p>AI 解析設備節點與連接關係，再透過程式化方式生成監控圖面，降低大量人工建圖的重複工作與錯誤。</p></div>
+          <div><div class="metric">↓ 50%</div><span class="tag">開發時間降低</span></div>
+        </article>
+
+        <article class="card result reveal">
+          <div><div class="num">02 / FLOW</div><div class="function-title">測試環境閾值 Profile｜多設備閾值快速切換<em>將不同產品的設備閾值整理成可批次套用的 Profile</em></div><p>使用者選擇對應 Profile 後，可批次 Apply、驗證 Ready / Alarm，測試完成後再 Restore 還原。</p></div>
+          <div><div class="metric">約 10 秒</div><span class="tag">完成多設備切換</span></div>
+        </article>
+
+        <article class="card result reveal">
+          <div><div class="num">03 / INTEGRATION</div><div class="function-title">工單 2.0 × Mantify｜事件通知與行動工單追蹤<em>BMS 事件從 Web 延伸到 Desktop / Web / App</em></div><p>事件發生後透過 Mantify 即時通知相關人員，並串接建立工單與處理進度追蹤。</p></div>
+          <div><div class="metric">App / Web</div><span class="tag">行動工單追蹤</span></div>
+        </article>
+
+        <article class="card result reveal">
+          <div><div class="num">04 / DATA</div><div class="function-title">Excel Export｜BMS 監控數據匯出與延伸分析<em>讓監控資料離開畫面後仍可被整理與使用</em></div><p>將 BMS 監控數據整理為 Excel，供使用者彙整、比對，或交由第三方系統進一步分析。</p></div>
+          <div><div class="metric">Data</div><span class="tag">延伸分析</span></div>
+        </article>
+
+        <article class="card result reveal">
+          <div><div class="num">05 / AI</div><div class="function-title">AI × Workflow｜前端需求對齊與開發提速<em>Prototype → AI 輔助實作 → 工程師 Review</em></div><p>需求確認時先以 Prototype 具體化想法，實作階段由 AI 協助頁面與 CSS，再由工程師負責整合與品質。</p></div>
+          <div><div class="metric">Faster</div><span class="tag">開發提速</span></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="scene" id="change">
+    <div class="section-no">03</div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">03 / 轉 · Change the workflow</div>
-        <div><h2>真正的改變，不只是功能變多，<br>而是工作方式開始改變。</h2></div>
+        <div><h2>真正的改變，<br>是把重複工作重新設計。</h2></div>
       </div>
+
       <div class="spotlight">
         <article class="card feature reveal">
-          <div class="eyebrow">AI × FiDraw</div>
+          <div class="eyebrow">AI × FiDraw · Main Case</div>
           <h3>從人工建圖，走向輔助解析＋程式化生成。</h3>
-          <p>透過 AI 輔助圖面分析與程式化生成，降低大量監控 Diagram 建置的重複工作與人為錯誤；RD 仍保留確認與品質判斷。</p>
+          <p>透過 AI 輔助圖面分析與程式化生成，降低大量監控 Diagram 建置的重複工作與人為錯誤；RD 仍保留確認、整合與品質判斷。</p>
+
           <div class="flow">
             <div class="flow-item"><div class="flow-no">01</div><span>現場電力架構簡圖</span></div>
             <div class="flow-item"><div class="flow-no">02</div><span>AI 輔助解析節點與連接</span></div>
             <div class="flow-item"><div class="flow-no">03</div><span>轉為結構化資料</span></div>
             <div class="flow-item"><div class="flow-no">04</div><span>Diagram 程式化生成</span></div>
           </div>
+
           <div class="metrics">
             <div class="metric-box"><strong>↓ 50%</strong><small>開發時間</small></div>
             <div class="metric-box"><strong>20% → 5%</strong><small>錯誤率</small></div>
           </div>
         </article>
+
         <div class="stack">
-          <article class="card mini reveal"><div class="mini-accent">Profile</div><h3>把複雜設定留在系統裡。</h3><p>將逐台、逐項設定轉為 Profile 標準流程；使用者只需選擇對應 Profile，即可快速完成環境閾值切換。</p></article>
-          <article class="card mini reveal"><div class="mini-accent">Mantify</div><h3>讓事件主動找到人。</h3><p>從 BMS Web 延伸到 Desktop / Web / App，事件通知、建立工單與處理追蹤不再受限於場域。</p></article>
-          <article class="card mini reveal"><div class="mini-accent">Excel Export</div><h3>讓數據離開畫面後繼續產生價值。</h3><p>匯出 BMS 監控數據，支援整理、比對與第三方系統後續處理。</p></article>
+          <article class="card mini reveal">
+            <div class="mini-accent">Profile</div>
+            <h3>測試環境閾值 Profile｜多設備快速切換</h3>
+            <p>將逐台、逐項設定轉為 Profile 標準流程；使用者透過 Profile 即可快速完成環境閾值切換。</p>
+          </article>
+
+          <article class="card mini reveal">
+            <div class="mini-accent">Mantify</div>
+            <h3>工單 2.0 × Mantify｜事件通知與行動追蹤</h3>
+            <p>BMS 事件延伸到 Desktop / Web / App，串接通知、建立工單與處理追蹤。</p>
+          </article>
+
+          <article class="card mini reveal">
+            <div class="mini-accent">Excel Export</div>
+            <h3>Excel Export｜監控數據匯出與延伸分析</h3>
+            <p>匯出 BMS 監控數據，支援整理、比對與第三方系統後續處理。</p>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="ai">
+  <section class="scene" id="ai">
+    <div class="section-no">04</div>
     <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">04 / 合 · AI × Workflow</div>
-        <div><h2>AI 不代替判斷，<br>它讓工程師把時間放在更重要的地方。</h2><div class="lead">在適合的開發階段導入 AI，縮短需求溝通與重複實作時間；工程師仍負責需求判斷、整合與品質。</div></div>
+      <div class="section-head no-kicker reveal">
+        <div>
+          <h2>AI 加速執行，<br>工程師掌握方向與品質。</h2>
+          <div class="lead">在適合的開發階段導入 AI，縮短需求溝通與重複實作時間；需求判斷、整合與最終品質仍由工程師負責。</div>
+        </div>
       </div>
+
       <div class="workflow">
         <div class="step reveal"><i>01</i><h4>需求確認</h4><p>先釐清問題、操作流程與期待結果。</p></div>
         <div class="step reveal"><i>02</i><h4>即時 Prototype</h4><p>用畫面具體化雙方想法，降低溝通落差。</p></div>
         <div class="step reveal"><i>03</i><h4>AI 輔助實作</h4><p>協助頁面結構、CSS 與重複性調整。</p></div>
         <div class="step reveal"><i>04</i><h4>工程師 Review</h4><p>負責整合、設計一致性與最終品質。</p></div>
       </div>
-      <div class="rules reveal">
-        <span>Existing Component</span><span>Color / Spacing</span><span>Typography</span><span>Design Rules</span><span>Prompt Engineering</span>
-      </div>
+      <div class="workflow-note reveal"><b>重點：</b>不是「會用 AI」，而是把 AI 放進可重複、可控制、能維持品質的開發流程。</div>
     </div>
   </section>
 
-  <section id="future">
+  <section class="scene" id="future">
+    <div class="section-no">05</div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">05 / Next</div>
-        <div><h2>下一階段，<br>把個人經驗變成團隊可共享的能力。</h2></div>
+        <div>
+          <h2>下一階段，<br>把個人經驗變成團隊可共享的能力。</h2>
+        </div>
       </div>
+
       <div class="future">
-        <article class="card reveal"><div class="index">01 / UI & UX</div><h3>簡化複雜流程</h3><p>兼顧不同使用情境，讓操作更直覺、簡單，也更容易維護。</p></article>
-        <article class="card reveal"><div class="index">02 / PROJECT</div><h3>強化專案推進</h3><p>提升任務規劃、進度掌控與研發工作統整，讓跨角色協作更穩定。</p></article>
-        <article class="card reveal"><div class="index">03 / AI × TEAM</div><h3>沉澱可複製的方法</h3><p>整理可重複使用的 Workflow、Prompt 與規範，讓 AI 實務經驗可以被團隊延續。</p></article>
+        <article class="card reveal">
+          <div class="index">01 / UI & UX</div>
+          <h3>簡化複雜流程</h3>
+          <p>兼顧不同使用情境，讓操作更直覺、簡單，也更容易維護。</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="index">02 / PROJECT</div>
+          <h3>強化專案推進</h3>
+          <p>提升任務規劃、進度掌控與研發工作統整，讓跨角色協作更穩定。</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="index">03 / AI × TEAM</div>
+          <h3>沉澱可複製的方法</h3>
+          <p>整理可重複使用的 Workflow、Prompt 與規範，讓 AI 實務經驗可以被團隊延續。</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="closing">
+  <section class="scene closing" id="closing">
     <div class="wrap reveal">
       <div class="kicker">2026 / Max</div>
-      <h2>把複雜留給技術，<br><span class="accent">把簡單留給使用者。</span></h2>
-      <p>持續將 AI 融入工作流程，與團隊一起提升開發效率與產品品質。</p>
+      <h2>從完成功能，<br><span class="accent">走向提升產品與團隊效能。</span></h2>
+      <p>持續累積開發經驗，將有效的方法沉澱為可延續、可共享的團隊能力。</p>
       <div class="sig">FII CESBG · CLOUD PLATFORM</div>
     </div>
   </section>
 </main>
 
 <script>
+  const scenes = [...document.querySelectorAll('section.scene')];
   const progress = document.getElementById('progress');
+  const links = [...document.querySelectorAll('.jump a')];
+
   const updateProgress = () => {
     const h = document.documentElement;
-    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    const max = h.scrollHeight - h.clientHeight;
+    const scrolled = max > 0 ? h.scrollTop / max : 0;
     progress.style.width = `${Math.max(0, Math.min(1, scrolled)) * 100}%`;
   };
-  addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
+  addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
 
-  const io = new IntersectionObserver((entries)=>{
+  const revealObserver = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
-      if(entry.isIntersecting){ entry.target.classList.add('show'); io.unobserve(entry.target); }
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        revealObserver.unobserve(entry.target);
+      }
     });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay = `${Math.min(i%5,4)*45}ms`;io.observe(el)});
+  },{threshold:.10});
+
+  document.querySelectorAll('.reveal').forEach((el)=>{
+    revealObserver.observe(el);
+  });
+
+  const sectionObserver = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      if(!entry.isIntersecting) return;
+      const id = entry.target.id;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    });
+  },{rootMargin:'-35% 0px -55% 0px',threshold:0});
+
+  scenes.forEach(s=>sectionObserver.observe(s));
+
+  // Keyboard navigation for screen sharing: ↑ / ↓ moves one story section at a time.
+  let keyLock = false;
+  addEventListener('keydown',(e)=>{
+    if(!['ArrowDown','ArrowUp'].includes(e.key) || keyLock) return;
+    e.preventDefault();
+
+    const center = scrollY + innerHeight * .45;
+    let current = 0;
+    scenes.forEach((s,i)=>{
+      if(s.offsetTop <= center) current = i;
+    });
+
+    const target = e.key === 'ArrowDown'
+      ? Math.min(scenes.length - 1, current + 1)
+      : Math.max(0, current - 1);
+
+    if(target === current) return;
+    keyLock = true;
+    scenes[target].scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>keyLock=false, 520);
+  });
 </script>
 </body>
 </html>
